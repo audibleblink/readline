@@ -1,8 +1,6 @@
 package readline
 
-import (
-	"os"
-)
+import "io"
 
 type Config struct {
 	// prompt supports ANSI escape sequence, so we can color some characters
@@ -11,9 +9,9 @@ type Config struct {
 	InterruptPrompt string
 	EOFPrompt       string
 
-	Stdin  *os.File
-	Stdout *os.File
-	Stderr *os.File
+	Stdin  *io.ReadCloser
+	Stdout *io.Writer
+	Stderr *io.Writer
 
 	Mask rune
 
